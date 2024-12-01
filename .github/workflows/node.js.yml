@@ -1,29 +1,41 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
+name: Node.js Backend CI
 
 on:
   push:
     branches: [ "main" ]
- 
+
 jobs:
   build:
-
-    runs-on: self-hosted
+    # Specify the type of runner
+    runs-on: self-hosted # Change to `self-hosted` only if you have a self-hosted runner set up
 
     strategy:
       matrix:
-        node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x, 22.x] # Adjust versions according to your backend compatibility
 
     steps:
+    # Step 1: Checkout the repository
     - uses: actions/checkout@v4
+
+    # Step 2: Set up Node.js environment
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run build
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: npm ci
+
+    # Step 4: Build the application (optional for backend, use if a build step is present)
+    - name: Build Application
+      run: npm run build --if-present
+
+    # Step 5: Run tests (if tests are defined)
+    - name: Run Builds
+      run: npm run build
+
+    # Step 6: Start the application (for validation or deployment purposes)
+    - name: Start Application
+      run: npm start
