@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x] # Adjust versions according to your backend compatibility
+        node-version: [18.x] # Adjust versions according to your backend compatibility
 
     steps:
     # Step 1: Checkout the repository
