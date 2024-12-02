@@ -32,9 +32,6 @@ jobs:
     - name: Build Application
       run: npm run build --if-present
 
-    # Step 5: Run tests (if tests are defined)
-    - name: Run Builds
-      run: npm run build
 
     # Step 6: Start the application (for validation or deployment purposes)
     - name: Start Application
