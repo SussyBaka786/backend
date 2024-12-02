@@ -11,7 +11,7 @@ const Commision = require('../models/Commision');
 dotenv.config({ path: "./config.env" });
 
 // const privateKeyPem = fs.readFileSync('C:/Users/Administrator/OneDrive/Desktop/College/7th Sem/heli-reservation-system-backend/BE10000115.key', 'utf-8');
-const privateKeyPem = fs.readFileSync('C:/Users/GCIT/OneDrive/Desktop/Fullstack/backend/BE10000115.key', 'utf-8');
+const privateKeyPem = fs.readFileSync('./BE10000115.key', 'utf-8');
 
 exports.signChecksum = (req, res) => {
     const {
